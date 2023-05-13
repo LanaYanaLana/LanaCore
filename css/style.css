@@ -1,0 +1,9 @@
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+body .titleContainer {
+  display: flex;
+  align-items: center;
+}/*# sourceMappingURL=style.css.map */

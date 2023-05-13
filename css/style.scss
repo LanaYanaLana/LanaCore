@@ -1,9 +1,85 @@
-body{
+@font-face {
+  font-family: "Anybody Italic";
+  src: url(./fonts/Anybody-Italic-VariableFont_wdth\,wght.ttf) format("truetype");
+}
+@font-face {
+  font-family: "Anybody Regular";
+  src: url(./fonts/Anybody-VariableFont_wdth\,wght.ttf) format("truetype");
+}
+
+:root {
+  --primary-red: #ff555a;
+  --darker-red: #892e34;
+  --lighter-red: #ff797b;
+}
+
+body {
     height: 100vh;
     display: flex;
     justify-content: center;
-    .titleContainer{
+    background: radial-gradient(#9c9c9c, #000000);
+    overflow: hidden;
+    .titleContainer {
         display: flex;
         align-items: center;
+        font-size: 4rem;
+        h1 {
+            font-family: "Anybody Italic";
+            color: var(--primary-red);
+            text-transform: uppercase;
+            animation: glitch 1s linear infinite;
+            &:before {
+                content: attr(title);
+                position: absolute;
+                left: 0;
+                animation: glitchTop 1s linear infinite;
+                clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+                -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+            }
+            &:after {
+                content: attr(title);
+                position: absolute;
+                left: 0;
+                animation: glitchBottom 1.5s linear infinite;
+                clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+                -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+            }
+        }
     }
 }
+
+@keyframes glitch{
+    2%,64%{
+      transform: translate(2px,0) skew(0deg);
+    }
+    4%,60%{
+      transform: translate(-2px,0) skew(0deg);
+    }
+    62%{
+      transform: translate(0,0) skew(5deg); 
+    }
+  }
+
+  @keyframes glitchTop{
+    2%,64%{
+      transform: translate(2px,-2px);
+    }
+    4%,60%{
+      transform: translate(-2px,2px);
+    }
+    62%{
+      transform: translate(13px,-1px) skew(-13deg); 
+    }
+  }
+
+  @keyframes glitchBottom{
+    2%,64%{
+      transform: translate(-2px,0);
+    }
+    4%,60%{
+      transform: translate(-2px,0);
+    }
+    62%{
+      transform: translate(-22px,5px) skew(21deg); 
+    }
+  }

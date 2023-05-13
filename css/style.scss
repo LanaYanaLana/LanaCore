@@ -17,14 +17,18 @@ body {
     height: 100vh;
     display: flex;
     justify-content: center;
-    background: radial-gradient(#9c9c9c, #000000);
+    background: #000;
     overflow: hidden;
     .titleContainer {
         display: flex;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
         font-size: 4rem;
+        font-family: "Anybody Italic";
         h1 {
-            font-family: "Anybody Italic";
+            //https://codepen.io/pgalor/pen/OeRWJQ
+            margin: 0;
             color: var(--primary-red);
             text-transform: uppercase;
             animation: glitch 1s linear infinite;
@@ -44,6 +48,41 @@ body {
                 clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
                 -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
             }
+        }
+        p{
+            margin: 0;
+            color: var(--lighter-red);
+            font-size: 1.5rem;
+            font-variation-settings: "wght" 200;
+        }
+    }
+    video{
+        z-index: -1;
+        position: fixed;
+        min-width: 100%;
+        min-height: 100%;
+        align-self: center;
+        filter: brightness(0.3);
+    }
+    //https://codepen.io/acupoftee/pen/WNbBxXq
+    .scanlines {
+        overflow: hidden;
+        mix-blend-mode: difference;
+        &:before{
+            content: "";
+            position: absolute;
+            width: 100%;
+            min-height: 100%;
+            top: 0;
+            left: 0;
+            background: repeating-linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(255, 255, 255, 0.05) .5%,
+                transparent 1%
+                );
+
+            animation: fudge 7s ease-in-out alternate infinite;
         }
     }
 }
@@ -74,12 +113,24 @@ body {
 
   @keyframes glitchBottom{
     2%,64%{
-      transform: translate(-2px,0);
+        transform: translate(-2px,0);
+        color: var(--lighter-red);
     }
     4%,60%{
-      transform: translate(-2px,0);
+        transform: translate(-2px,0);
+        color: var(--primary-red);
     }
     62%{
-      transform: translate(-22px,5px) skew(21deg); 
+        transform: translate(-22px,5px) skew(21deg); 
+        color: var(--primary-red);
+    }
+  }
+
+  @keyframes fudge {
+    from {
+      transform: translate(0px, 0px);
+    }
+    to {
+      transform: translate(0px, 2%);
     }
   }
